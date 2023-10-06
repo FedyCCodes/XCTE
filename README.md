@@ -2,23 +2,23 @@
 
 ![General Picture](github_images/a-1.png)
 
-This is an IDE inspired by Xcode that I created and use for all of my personal programming projects. This IDE includes a multitude of different features including source code editor, code completion, file management, compilation, and external extensions.
+This is an IDE inspired by Xcode that I created and used for all of my personal programming projects. This IDE includes a multitude of different features including a source code editor, code completion, file management, compilation, and external extensions.
 
-*Notice: The code for this project is not available. Snippets of code to show structure may be availabe but this project is purely for portfolio purposes. I do not intend on releasing the code publically.*
+*Notice: The code for this project is not available. Snippets of code to show structure may be available but this project is purely for portfolio purposes. I do not intend to release the code publically.*
 
 ## How to run:
 
-Currently, the project is built on a separate runner made in Swift with Xcode for macOS that extracts and HTML and JavaScript files to run the user interface of the IDE.
+Currently, the project is built on a separate runner made in Swift with Xcode for macOS that extracts HTML and JavaScript files to run the user interface of the IDE.
 
 *Note: I'm also currently implementing a Windows version using C# with file system functions however it is not currently complete.*
 
 ## Background:
 
-I created this project in high school on a computer I was given. At the time, there weren't many options for me to code with other than the chrome developer tools and a few text editors. I was curious about learning how IDEs worked and I started by creating my own IDE until it expanded to what it is today. This originally started off as a Chrome App, but was then eventually ported to macOS when I had the resources to do it.
+I created this project in high school on a computer I was given. At the time, there weren't many options for me to code with other than the Chrome developer tools and a few text editors. I was curious about learning how IDEs worked and I started by creating my own IDE until it expanded to what it is today. This originally started off as a Chrome App but was then eventually ported to macOS when I had the resources to do it.
 
 ## How it works:
 
-The IDE primarily operates on the frontend of the application through the JavaScript side, however it also sends signals to the executable (written in either C# or Swift) to handle file processes or extrnal tasks such as compilation.
+The IDE primarily operates on the front end of the application through the JavaScript side, however, it also sends signals to the executable (written in either C# or Swift) to handle file processes or external tasks such as compilation.
 
 ### Controllers:
 
@@ -30,29 +30,29 @@ The IDE is composed of controller classes that independently manage different se
   * file reading
   * file writing
   * reading and updating directories
-  * background file clean up
+  * background file clean-up
 * `XCTENewFileController`: This controller is responsible for allowing new files to be created with different file formats.
 * `XCTESourceKitController`: This controller is the central section that allows code completion to work through communicating through binaries or by using [TernJS](https://ternjs.net/).
 * `XCTEDocumentationController`: This class when used extracts all possible [JSDoc](https://jsdoc.app/) code documentation found within the IDE and caches it so it can use it elsewhere.
-* `XCTERunnerController`: This class extracts and set up all the possible files that it can run and compile such as C++, Java, Javascript, etc.
+* `XCTERunnerController`: This class extracts and sets up all the possible files that it can run and compile such as C++, Java, Javascript, etc.
 * `XCTENavigationController`: This controller allows the navigation to be expandable to add different features such as search.
 * `XCTEHeaderTabsController`: This class manages all the files that are actively used by the IDE and stores them in the header to allow the user to manage through them.
-* `XCTEExtensionController`: This controller is central to the expandability of this application to allow extensions for file reading, writing, mini-applications and chrome styled extensions to run.
-* `XCTEProjectController`: This class provides analysis for `.xcteproj` files in order to manage certain features in the IDE such as documentation, snippets or others.
-* `XCTENotificationController`: This allows notifications to be sent from the IDE if a task has been completed or an internal error occured.
+* `XCTEExtensionController`: This controller is central to the expandability of this application to allow extensions for file reading, writing, mini-applications, and chrome-styled extensions to run.
+* `XCTEProjectController`: This class provides analysis for `.xcteproj` files in order to manage certain features in the IDE such as documentation, snippets, or others.
+* `XCTENotificationController`: This allows notifications to be sent from the IDE if a task has been completed or an internal error occurred.
 * `XCTESnippetsController`: This controller allows the source code editor to use different snippets including the ability to read Visual Studio Code snippets.
-* `XCTECommunicationsController`: The class that handles all the communications between the frontend of the IDE and the runner of the IDE.
+* `XCTECommunicationsController`: The class that handles all the communications between the front end of the IDE and the runner of the IDE.
 
 ### Application Structure:
 
-As previously stated, the central layers of this IDE include a runner, the frontend, and extrernal tasks. The runner is used primarily to allow operating system capabilities and to have the GUI run with HTML and Javascript.
+As previously stated, the central layers of this IDE include a runner, the front end, and external tasks. The runner is used primarily to allow operating system capabilities and to have the GUI run with HTML and Javascript.
 
 #### Runner:
 
-On macOS, the runner is composed of the `WKWebView` from the `WebKit` package and used the `WKScriptMessageHandler` delegate class. Once a message is received, it redirects it to the `XCTECommunicationsController` class in swift to manage it 
+On macOS, the runner is composed of the `WKWebView` from the `WebKit` package and uses the `WKScriptMessageHandler` delegate class. Once a message is received, it redirects it to the `XCTECommunicationsController` class in Swift to manage it 
 
 ```swift
-// here's a truncated version of the ViewController class
+// Here's a truncated version of the ViewController class
   
 class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHandler {
   
@@ -62,7 +62,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHan
     // when it receives a callback
     
     XCTECommunicationsController.runCommunications(name: (message.name as? String)!, data: (message.body as? String)!, webView: webView)
-    // it runs it with the name and message
+    // It runs it with the name and message
     
   }
   
@@ -80,7 +80,7 @@ On Windows (not currently complete), it's using the `WebView2` from the `Microso
 The central user interface is built on the library HTML-Advanced which is a client side JavaScript component library similar to react. It's composed of two central elements called `xcte-header` and `xcte-body` that are each composed of different premade elements to unite all the GUI sections in the IDE.
 
 ```javascript
-// here's the HTML for the `xcte-header` element
+// Here's the HTML for the `xcte-header` element
 
 HTMLAdvanced.addNewTag("xcte-header", `
   <div id="header">
@@ -99,15 +99,15 @@ HTMLAdvanced.addNewTag("xcte-header", `
 
 ### File System:
 
-The central file system of the IDE uses the FileSystem classes that are structurally inspired by the [Chrome File System API](https://developer.chrome.com/docs/apps/app_codelab_filesystem/) for chrome apps before it was depricated.
+The central file system of the IDE uses the FileSystem classes that are structurally inspired by the [Chrome File System API](https://developer.chrome.com/docs/apps/app_codelab_filesystem/) for Chrome apps before it was deprecated.
 
 #### Examples:
 
 To expand the IDE's capabilities after the [Chrome File System API](https://developer.chrome.com/docs/apps/app_codelab_filesystem/), I implement extra methods to add more features to the file system.
 
 ##### Classes:
-* `NSFileEntry`: The file class to handle paths, reading, and writing (equivelant to: `FileEntry`). 
-* `NSDirectoryEntry`: The folder class to handle paths, reading and writing (equivelant to: `DirectoryEntry`).
+* `NSFileEntry`: The file class to handle paths, reading, and writing (equivalent to: `FileEntry`). 
+* `NSDirectoryEntry`: The folder class to handle paths, reading, and writing (equivalent to: `DirectoryEntry`).
 
 Here is a sample of reading a file:
 
@@ -284,7 +284,7 @@ The applications and extensions of this IDE are all centrally managed through th
 Here are the main properties and methods of the class `XCTEExtensionController`:
 - `addTemplate`: This adds a template for the extensions to use.
 - `extensions`: This is the property for all the extensions stored in the IDE.
-- `getExtensionById`: This method retreive all the extension data from the IDE.
+- `getExtensionById`: This method receives all the extension data from the IDE.
 - `openFileFrame`: This method allows extensions to modify the source code editor.
 - `addExtension`: This is the method that lets the IDE add an extension.
 
@@ -294,9 +294,9 @@ Here are the main properties and methods of the class `XCTEExtensionController`:
 
 There are 3 central extension types: "file", "application", and "extension".
 
-- "file": modifies the main source code editor to put unique HTML or an iframe to have it allow to read or write different files (Examples are the PDF, and Zip).
-- "application": A mini application inside the app that simplies developments
-- "extensions": Chrome styled extensions that serve for simple features or games.
+- "file": modifies the main source code editor to put unique HTML or an iframe to have it allow to read or write different files (Examples are the PDF and Zip).
+- "application": A mini application inside the app that simplifies developments
+- "extensions": Chrome-styled extensions that serve for simple features or games.
 
 #### Mini Apps:
 
@@ -333,7 +333,7 @@ Libraries:
 * [Babel](https://babeljs.io/): open source compiler that allows JSX to be transpiled into javascript which was used for the user interface.
 * [Less CSS](https://lesscss.org/): post processing style sheet language to style the application.
 * [JSZip](): Allows the IDE to read and write zip files
-* [HTMLAdvanced](): The client side UI framework used to create this.
+* [HTMLAdvanced](): The client-side UI framework used to create this.
 * [Clang](https://clang.llvm.org/): The C and C++ compiler
 
 IDEs:
