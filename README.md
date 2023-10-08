@@ -320,9 +320,10 @@ Here are some of the apps used in the IDE:
 
 ## Sources:
 
-Inspiration:
+Research:
 
 * [Caret](https://github.com/thomaswilburn/Caret): Allowed me to first start learning about structuring this project.
+* [Visual Studio Code](https://github.com/microsoft/vscode): Allowed me to better understand how IDE's and text editors work.
 
 Libraries: 
 
