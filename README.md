@@ -331,9 +331,9 @@ Libraries:
 * [jedi](https://github.com/davidhalter/jedi): A python framework that is used to provide code completion for python.
 * [SourceKitten](https://github.com/jpsim/SourceKitten): A swift framework that utilizes SourceKit to provide code completion for swift.
 * [TernJS](https://ternjs.net/): A javascript code analyzer to provide code completion.
-* [Babel](https://babeljs.io/): open source compiler that allows JSX to be transpiled into javascript which was used for the user interface.
+* [Babel](https://babeljs.io/): open source compiler that allows JSX to be transpiled into javascript.
 * [Less CSS](https://lesscss.org/): post processing style sheet language to style the application.
-* [JSZip](): Allows the IDE to read and write zip files
+* [JSZip](https://stuk.github.io/jszip/): Allows the IDE to read and write zip files
 * [HTMLAdvanced](): The client-side UI framework used to create this.
 * [Clang](https://clang.llvm.org/): The C and C++ compiler
 
