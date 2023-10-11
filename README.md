@@ -1,3 +1,4 @@
+
 # XCTE:
 
 ![General Picture](github_images/a-1.png)
@@ -41,6 +42,7 @@ The IDE is composed of controller classes that independently manage different se
 * `XCTEProjectController`: This class provides analysis for `.xcteproj` files in order to manage certain features in the IDE such as documentation, snippets, or others.
 * `XCTENotificationController`: This allows notifications to be sent from the IDE if a task has been completed or an internal error occurred.
 * `XCTESnippetsController`: This controller allows the source code editor to use different snippets including the ability to read Visual Studio Code snippets.
+* `XCTELayoutController`: The class that allows the user to rearrange the layout and manage the different color modes and size constraints.
 * `XCTECommunicationsController`: The class that handles all the communications between the front end of the IDE and the runner of the IDE.
 
 ### Application Structure:
@@ -220,6 +222,12 @@ Here are images:
 ![JavaScript Tern](github_images/a-3.png)
 ![C++ Clang](github_images/a-6.png)
 
+#### Code Documentation:
+
+When a project or directory is opened in the IDE, the IDE analyzes all the comments store in JSDoc format and places them into the documentation mini app once compiled. That way it makes it really easy to view all the classes that are being actively used in the working directory.
+
+![Documentation](github_images/a-10.png)
+
 #### AI Code Completion:
 
 There is an experimental feature I added that provides code completion based on comments through a markov chain that also analyzes the code that is used in the working directory.
@@ -228,11 +236,17 @@ There is an experimental feature I added that provides code completion based on 
 
 #### Extra File Formats:
 
-The IDE can also read different file types as previously stated. Some of them include zip files, PDF, and an assembly reader.
+The IDE can also read different file types as previously stated. Some of them include zip files, PDF, basic UI editor and an assembly reader.
 
 Here are pictures of some of the files described:
 
+##### Zip File:
+
 ![Zip](github_images/a-7.png)
+
+##### User Interface Designer (made from 0):
+
+![JUIR](github_images/a-9.png)
 
 ### Compilation Types:
 
