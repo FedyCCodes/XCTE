@@ -320,10 +320,6 @@ Here are some of the apps used in the IDE:
 
 ## Screenshots:
 
-### App Icon:
-
-![Icon Picture](github_images/icon.png)
-
 ### Light Mode:
 
 ![XCTE Project Light](github_images/a-1.png)
